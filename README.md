@@ -3,4 +3,4 @@ coin tracker merupakan sebuah aplikasi berbasis windows form yang berfungsi untu
 
 ## Kelompok 8
 - Ketua Kelompok	: Muchammad Hasan Chamdany
-	- Anggota 1		: Muhammad Arif Hidayat
+	- Anggota 1		: Muhammad Arif Hidayat - 20/463609/TK/51601
