@@ -1,6 +1,21 @@
+<<<<<<< HEAD
+theme: cayman
+=======
+<<<<<<<< HEAD:_config.yml
+>>>>>>> 122c2c953babf95947d0dfc402b2a32bd5736496
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
+title: coin-tracker
+<<<<<<< HEAD
+descriptions: sebuah aplikasi yang dapat menyelamatkan anda dari kemiskinan
+=======
+========
 theme: cayman
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 title: coin-tracker
 descriptions: sebuah aplikasi yang dapat menyelamatkan anda dari kemiskinan
+>>>>>>>> 122c2c953babf95947d0dfc402b2a32bd5736496:docs/_config.yml
+>>>>>>> 122c2c953babf95947d0dfc402b2a32bd5736496
