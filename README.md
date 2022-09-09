@@ -13,5 +13,5 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 ## Rancangan Aplikasi
 <div class="Usecase"> 
 	<h2>Use Case Diagram</h2>
-	<img src="./markdown_assets/GoCoin diagram-Use Case.jpg" width="300" alt="usecase diagram" />
+	<img src="./markdown-assets/1.jpg" width="300" alt="usecase diagram" />
 </div>
