@@ -21,7 +21,7 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 </div>
 <div class="activity diagram"> 
 	<h5>Activity Diagram</h5>
-	<img src="./markdown-assets/ActivityDiagramGoCoin.png" width="500" alt="activity diagram" />
+	<img src="./markdown-assets/FixActivityDiagramGoCoin.png" width="500" alt="activity diagram" />
 	<!-- <img src="./markdown-assets/AD1.jpg" width="200" alt="usecase diagram" />
 	<img src="./markdown-assets/AD2.jpg" width="200" alt="usecase diagram" />
 	<img src="./markdown-assets/AD3.jpg" width="200" alt="usecase diagram" />
