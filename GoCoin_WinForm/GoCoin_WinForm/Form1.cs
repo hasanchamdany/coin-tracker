@@ -6,5 +6,10 @@ namespace GoCoin_WinForm
         {
             InitializeComponent();
         }
+
+        private void btDashboard_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
