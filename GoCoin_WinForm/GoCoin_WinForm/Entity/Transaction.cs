@@ -27,5 +27,23 @@ namespace GoCoin_WinForm.Entity
             Amount = amount;
             Date = date;
         }
+
+        // methods
+        public void AddTransaction() { }
+        public void RemoveTransaction() { }
+        public void UpdateTransaction() { }
+        public List<Transaction> GetTransactions()
+        {
+            List<Transaction> ListTransaction = new List<Transaction>();
+            try
+            {
+                return ListTransaction;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
