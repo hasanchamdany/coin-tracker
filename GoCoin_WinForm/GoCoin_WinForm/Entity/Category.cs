@@ -13,12 +13,32 @@ namespace GoCoin_WinForm.Entity
         public int Id { get; set; }
         public string Category_name { get; set; }
 
-        //constructor
+        // constructor
         public Category() { }
         public Category(int id, string category_name)
         {
             Id = id;
             Category_name = category_name;
         }
+
+        // method
+        
+        public void AddCategory() { }
+        public void RemoveCategory() { }
+        public void UpdateCategory() { }
+        public List<Category> GetCategories()
+        {
+            List<Category> ListCategories = new List<Category>();
+            try
+            {
+                return ListCategories;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

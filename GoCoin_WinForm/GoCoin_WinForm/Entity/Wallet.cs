@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace GoCoin_WinForm.Entity
 {
-    internal class Wallet
+    class Wallet
     {
+        // properties
+        public int Id { get; set; }
+        public string Wallet_name { get; set; }
+
+        //constructor
+        public Wallet() { }
+        public Wallet(int id, string wallet_name)
+        {
+            Id = id;
+            Wallet_name = wallet_name;
+        }
     }
 }
