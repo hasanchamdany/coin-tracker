@@ -19,5 +19,23 @@ namespace GoCoin_WinForm.Entity
             Id = id;
             Wallet_name = wallet_name;
         }
+
+        // methods
+        public void AddWallet() { }
+        public void RemoveWallet() { }
+        public void UpdateWallet() { }
+        public List<Wallet> GetWallets()
+        {
+            List<Wallet> ListWallets = new List<Wallet>();
+            try
+            {
+                return ListWallets;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
