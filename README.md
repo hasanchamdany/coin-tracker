@@ -31,5 +31,5 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 </div>
 <div class="erd_diagram"> 
 	<h3>ERD Diagram</h3>
-	<img src="./markdown-assets/ERD-GoCoin.jpg" width="500" alt="class diagram" />
+	<img src="./markdown-assets/ERD-GoCoin-rev.png" width="500" alt="class diagram" />
 </div>
