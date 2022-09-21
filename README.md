@@ -12,15 +12,15 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 
 ## Rancangan Aplikasi
 <div class="Usecase"> 
-	<h5>Use Case Diagram</h5>
+	<h3>Use Case Diagram</h3>
 	<img src="./markdown-assets/1.jpg" width="500" alt="usecase diagram" />
 </div>
 <div class="classdiagram"> 
-	<h5>Class Diagram</h5>
+	<h3>Class Diagram</h3>
 	<img src="./markdown-assets/2.jpg" width="500" alt="class diagram" />
 </div>
-<div class="activity diagram"> 
-	<h5>Activity Diagram</h5>
+<div class="activity_diagram"> 
+	<h3>Activity Diagram</h3>
 	<img src="./markdown-assets/FixActivityDiagramGoCoin.png" width="500" alt="activity diagram" />
 	<!-- <img src="./markdown-assets/AD1.jpg" width="200" alt="usecase diagram" />
 	<img src="./markdown-assets/AD2.jpg" width="200" alt="usecase diagram" />
@@ -28,4 +28,8 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 	<img src="./markdown-assets/AD4.jpg" width="200" alt="usecase diagram" />
 	<img src="./markdown-assets/AD5.jpg" width="500" alt="usecase diagram" />
 	<img src="./markdown-assets/AD6.jpg" width="300" alt="usecase diagram" /> -->
+</div>
+<div class="erd_diagram"> 
+	<h3>ERD Diagram</h3>
+	<img src="./markdown-assets/ERD-GoCoin.jpg" width="500" alt="class diagram" />
 </div>
