@@ -16,5 +16,10 @@ namespace GoCoin_WinForm.Forms
         {
             InitializeComponent();
         }
+
+        private void Form_transaction_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
