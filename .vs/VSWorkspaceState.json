@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GoCoin_WinForm",
+    "\\GoCoin_WinForm\\GoCoin_WinForm",
+    "\\GoCoin_WinForm\\GoCoin_WinForm\\Forms"
   ],
+  "SelectedNode": "\\GoCoin_WinForm\\GoCoin_WinForm\\Forms\\Form-transaction.cs",
   "PreviewInSolutionExplorer": false
 }

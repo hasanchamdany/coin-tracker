@@ -30,103 +30,109 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btDashboard = new System.Windows.Forms.Button();
+            this.btnStatistic = new System.Windows.Forms.Button();
+            this.btnPocket = new System.Windows.Forms.Button();
+            this.btnTransaction = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.panelDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btDashboard);
+            this.panel1.Controls.Add(this.btnStatistic);
+            this.panel1.Controls.Add(this.btnPocket);
+            this.panel1.Controls.Add(this.btnTransaction);
+            this.panel1.Controls.Add(this.btnDashboard);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(280, 761);
+            this.panel1.Size = new System.Drawing.Size(200, 580);
             this.panel1.TabIndex = 0;
             // 
-            // button3
+            // btnStatistic
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Eras Bold ITC", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(0, 420);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(280, 65);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Statistic";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnStatistic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStatistic.FlatAppearance.BorderSize = 0;
+            this.btnStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistic.Font = new System.Drawing.Font("Eras Bold ITC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStatistic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnStatistic.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistic.Image")));
+            this.btnStatistic.Location = new System.Drawing.Point(0, 230);
+            this.btnStatistic.Name = "btnStatistic";
+            this.btnStatistic.Size = new System.Drawing.Size(200, 50);
+            this.btnStatistic.TabIndex = 12;
+            this.btnStatistic.Text = "Statistic";
+            this.btnStatistic.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnStatistic.UseVisualStyleBackColor = true;
+            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click_1);
             // 
-            // button2
+            // btnPocket
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Eras Bold ITC", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(0, 355);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(280, 65);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Transaction";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPocket.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPocket.FlatAppearance.BorderSize = 0;
+            this.btnPocket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPocket.Font = new System.Drawing.Font("Eras Bold ITC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPocket.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnPocket.Image = ((System.Drawing.Image)(resources.GetObject("btnPocket.Image")));
+            this.btnPocket.Location = new System.Drawing.Point(0, 180);
+            this.btnPocket.Name = "btnPocket";
+            this.btnPocket.Size = new System.Drawing.Size(200, 50);
+            this.btnPocket.TabIndex = 11;
+            this.btnPocket.Text = "Pocket";
+            this.btnPocket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPocket.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnPocket.UseVisualStyleBackColor = true;
+            this.btnPocket.Click += new System.EventHandler(this.btnPocket_Click_1);
             // 
-            // button1
+            // btnTransaction
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Eras Bold ITC", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(280, 65);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Wallet";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTransaction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTransaction.FlatAppearance.BorderSize = 0;
+            this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransaction.Font = new System.Drawing.Font("Eras Bold ITC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTransaction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnTransaction.Image = ((System.Drawing.Image)(resources.GetObject("btnTransaction.Image")));
+            this.btnTransaction.Location = new System.Drawing.Point(0, 130);
+            this.btnTransaction.Name = "btnTransaction";
+            this.btnTransaction.Size = new System.Drawing.Size(200, 50);
+            this.btnTransaction.TabIndex = 10;
+            this.btnTransaction.Text = "Transaction";
+            this.btnTransaction.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTransaction.UseVisualStyleBackColor = true;
+            this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
-            // btDashboard
+            // btnDashboard
             // 
-            this.btDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btDashboard.FlatAppearance.BorderSize = 0;
-            this.btDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDashboard.Font = new System.Drawing.Font("Eras Bold ITC", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btDashboard.Image")));
-            this.btDashboard.Location = new System.Drawing.Point(0, 225);
-            this.btDashboard.Name = "btDashboard";
-            this.btDashboard.Size = new System.Drawing.Size(280, 65);
-            this.btDashboard.TabIndex = 1;
-            this.btDashboard.Text = "Dashboard";
-            this.btDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btDashboard.UseVisualStyleBackColor = true;
-            this.btDashboard.Click += new System.EventHandler(this.btDashboard_Click);
+            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDashboard.FlatAppearance.BorderSize = 0;
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Eras Bold ITC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
+            this.btnDashboard.Location = new System.Drawing.Point(0, 80);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(200, 50);
+            this.btnDashboard.TabIndex = 9;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // panel2
             // 
@@ -134,55 +140,79 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 225);
+            this.panel2.Size = new System.Drawing.Size(200, 80);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(29, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(42, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(94, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel3
+            // panelDesktop
             // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = global::GoCoin_WinForm.Properties.Resources.animated_logo1;
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(342, 225);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(605, 296);
-            this.panel3.TabIndex = 1;
+            this.panelDesktop.BackColor = System.Drawing.Color.Transparent;
+            this.panelDesktop.BackgroundImage = global::GoCoin_WinForm.Properties.Resources.animated_logo1;
+            this.panelDesktop.Controls.Add(this.pictureBox2);
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelDesktop.Location = new System.Drawing.Point(200, 80);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(900, 500);
+            this.panelDesktop.TabIndex = 1;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(43, 40);
+            this.pictureBox2.Location = new System.Drawing.Point(298, 213);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(523, 220);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.Size = new System.Drawing.Size(260, 105);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lblTitle);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(200, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(900, 80);
+            this.panel5.TabIndex = 2;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Eras Bold ITC", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.lblTitle.Location = new System.Drawing.Point(33, 32);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(70, 23);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Home";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1484, 761);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1100, 580);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
+            this.panelDesktop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -190,13 +220,15 @@
         #endregion
 
         private Panel panel1;
-        private Button btDashboard;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Button button2;
-        private Button button1;
-        private Button button3;
-        private Panel panel3;
+        private Panel panelDesktop;
         private PictureBox pictureBox2;
+        private Panel panel5;
+        private Label lblTitle;
+        private Button btnStatistic;
+        private Button btnPocket;
+        private Button btnTransaction;
+        private Button btnDashboard;
     }
 }
