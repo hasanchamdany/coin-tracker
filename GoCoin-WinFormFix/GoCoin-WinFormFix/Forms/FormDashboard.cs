@@ -21,5 +21,10 @@ namespace GoCoin_WinFormFix.Forms
         {
 
         }
+
+        private void btnEditWallet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
