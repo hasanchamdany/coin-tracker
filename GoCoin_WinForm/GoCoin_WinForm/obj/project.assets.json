@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Coding\\Kuliah\\JP - Junior Project\\code\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\GoCoin_WinForm.csproj",
+      "projectUniqueName": "E:\\Coding\\Kuliah\\JP - Junior Project\\JP2\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\GoCoin_WinForm.csproj",
       "projectName": "GoCoin_WinForm",
-      "projectPath": "E:\\Coding\\Kuliah\\JP - Junior Project\\code\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\GoCoin_WinForm.csproj",
+      "projectPath": "E:\\Coding\\Kuliah\\JP - Junior Project\\JP2\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\GoCoin_WinForm.csproj",
       "packagesPath": "C:\\Users\\Muhammad Arif\\.nuget\\packages\\",
-      "outputPath": "E:\\Coding\\Kuliah\\JP - Junior Project\\code\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\obj\\",
+      "outputPath": "E:\\Coding\\Kuliah\\JP - Junior Project\\JP2\\coin-tracker\\GoCoin_WinForm\\GoCoin_WinForm\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
