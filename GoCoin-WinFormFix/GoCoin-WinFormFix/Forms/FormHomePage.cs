@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace GoCoin_WinFormFix.Forms
 {
@@ -17,6 +18,13 @@ namespace GoCoin_WinFormFix.Forms
         public FormHomePage()
         {
             InitializeComponent();
+        }
+        public NpgsqlConnection conn;
+        public string connstring = "Host=localhost;Port=5432;Username=postgress;Password=root;Database=GoCoin";
+
+        public void FormHomePage_Load(object sender, EventArgs e)
+        {
+            conn = new NpgsqlConnection(connstring);
         }
 
         private void OpenChildForm(Form childForm, object btnSender, string title)
