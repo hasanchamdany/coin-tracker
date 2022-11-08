@@ -26,5 +26,7 @@ namespace GoCoin_WinFormFix.Forms
         {
 
         }
+
+        
     }
 }
