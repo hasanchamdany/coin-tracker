@@ -19,7 +19,8 @@ namespace GoCoin_WinFormFix.Forms
             InitializeComponent();
         }
         public NpgsqlConnection conn;
-        public string connstring = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=GoCoin";
+        /*public string connstring = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=GoCoin";*/
+        string connstring = "Host = localhost; port=5432; username = postgres; password = admin; database = gocoindb";
 
         public DataTable dt;
         public static NpgsqlCommand cmd;
@@ -28,6 +29,7 @@ namespace GoCoin_WinFormFix.Forms
         private void FormWallet_Load(object sender, EventArgs e)
         {
             conn = new NpgsqlConnection(connstring);
+            btnLoadWallet.PerformClick();
         }
 
         private void btnAddWallet_Click(object sender, EventArgs e)

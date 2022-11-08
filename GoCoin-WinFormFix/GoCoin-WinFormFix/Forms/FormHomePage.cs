@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Npgsql;
 
 namespace GoCoin_WinFormFix.Forms
@@ -52,9 +53,10 @@ namespace GoCoin_WinFormFix.Forms
             OpenChildForm(new Forms.FormWallet(), sender, "Wallet");
         }
 
-        private void btnStatistic_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormStatistic(), sender, "Statistic");
+            activeForm.Close();
+            lblTitle.Text = "Home";
         }
     }
 }
