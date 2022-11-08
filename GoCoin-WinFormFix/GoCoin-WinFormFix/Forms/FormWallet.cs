@@ -20,7 +20,7 @@ namespace GoCoin_WinFormFix.Forms
         }
         public NpgsqlConnection conn;
         /*public string connstring = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=GoCoin";*/
-        string connstring = "Host = localhost; port=5432; username = postgres; password = admin; database = gocoindb";
+        string connstring = "Host = localhost; port=5432; username = postgres; password = admin; database = GoCoin";
 
         public DataTable dt;
         public static NpgsqlCommand cmd;
@@ -81,7 +81,7 @@ namespace GoCoin_WinFormFix.Forms
             if(e.RowIndex >= 0)
             {
                 r = dgvWalletData.Rows[e.RowIndex];
-                txtWalletName.Text = r.Cells["Walletname"].Value.ToString();
+                txtWalletName.Text = r.Cells["walletName"].Value.ToString();
             }
         }
 
@@ -95,9 +95,9 @@ namespace GoCoin_WinFormFix.Forms
             try
             {
                 conn.Open();
-                sql = @"select * from wallet_update(:_id :_wallet_name)";
+                sql = @"select * from wallet_update(:_id, :_wallet_name)";
                 cmd = new NpgsqlCommand(sql, conn);
-                //cmd.Parameters.AddWithValue("_id", r.Cells("_id").Value.ToString());
+                cmd.Parameters.AddWithValue("_id", r.Cells["id"].Value.ToString());
                 cmd.Parameters.AddWithValue("_wallet_name", txtWalletName.Text);
                 if((int)cmd.ExecuteScalar() == 1)
                 {
@@ -112,6 +112,40 @@ namespace GoCoin_WinFormFix.Forms
             {
                 MessageBox.Show("Error" + ex.Message, "Update Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnDeleteWallet_Click(object sender, EventArgs e)
+        {
+            if (r == null)
+            {
+                MessageBox.Show("Mohon pilih baris data yang akan di dihapus", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Apakah benar anda ingin menghapus data " + r.Cells["walletName"].Value.ToString()+" ?", "Hapus data terkonfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                try
+                {
+                    conn.Open();
+                    sql = @"select * from wallet_delete(:_id)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("_id", r.Cells["id"].Value.ToString());
+
+                    if ((int)cmd.ExecuteScalar() == 1)
+                    {
+                        MessageBox.Show("Data Wallet Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
+                        btnLoadWallet.PerformClick();
+                        txtWalletName = null;
+                        r = null;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error" + ex.Message, "Update Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
         }
     }
 }
