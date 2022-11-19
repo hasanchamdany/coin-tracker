@@ -195,7 +195,7 @@
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Panel panel4;
         private FontAwesome.Sharp.IconButton btnDashboard;
-        private FontAwesome.Sharp.IconButton btnWallet;
+        public FontAwesome.Sharp.IconButton btnWallet;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

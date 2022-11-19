@@ -48,7 +48,7 @@ namespace GoCoin_WinFormFix.Forms
             OpenChildForm(new Forms.FormDashboard(), sender, "Dashboard");
         }
 
-        private void btnWallet_Click(object sender, EventArgs e)
+        public void btnWallet_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormWallet(), sender, "Wallet");
         }
