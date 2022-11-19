@@ -16,8 +16,8 @@ namespace GoCoin_WinFormFix.Entity
     internal class Wallet
     {
         // properties
-        protected string _id { get; set; }
-        protected string _name { get; set; }
+        protected string _id;
+        protected string _name;
 
         public string Id
         {
@@ -32,14 +32,14 @@ namespace GoCoin_WinFormFix.Entity
 
         //constructor
         public Wallet() { }
-        public Wallet( string wallet_name_)
+        public Wallet( string wallet_name)
         {
-            _name = wallet_name_;
+            _name = wallet_name;
         }
-        public Wallet(string id_, string wallet_name_)
+        public Wallet(string id, string wallet_name)
         {
-            _id = id_;
-            _name = wallet_name_;
+            _id = id;
+            _name = wallet_name;
         }
 
         // Connection variables

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvWalletData = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.btnAddWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txtWalletName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -36,39 +35,11 @@
             this.btnEditWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnDeleteWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnLoadWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.walletName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvWalletData)).BeginInit();
+            this.dgvWallet = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWallet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvWalletData
-            // 
-            this.dgvWalletData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWalletData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.walletName,
-            this.amount});
-            this.dgvWalletData.Location = new System.Drawing.Point(330, 46);
-            this.dgvWalletData.Name = "dgvWalletData";
-            this.dgvWalletData.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvWalletData.Size = new System.Drawing.Size(512, 373);
-            this.dgvWalletData.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.dgvWalletData.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
-            this.dgvWalletData.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.dgvWalletData.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.dgvWalletData.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
-            this.dgvWalletData.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.White;
-            this.dgvWalletData.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dgvWalletData.StateCommon.DataCell.Content.Color1 = System.Drawing.Color.White;
-            this.dgvWalletData.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.dgvWalletData.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.dgvWalletData.TabIndex = 0;
-            this.dgvWalletData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWalletData_CellContentClick);
             // 
             // btnAddWallet
             // 
@@ -188,29 +159,15 @@
             this.btnLoadWallet.Values.Text = "Load";
             this.btnLoadWallet.Click += new System.EventHandler(this.btnLoadWallet_Click);
             // 
-            // id
+            // dgvWallet
             // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.id.DataPropertyName = "_id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Width = 46;
-            // 
-            // walletName
-            // 
-            this.walletName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.walletName.DataPropertyName = "_wallet_name";
-            this.walletName.HeaderText = "Wallet name";
-            this.walletName.Name = "walletName";
-            this.walletName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // amount
-            // 
-            this.amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.amount.DataPropertyName = "_amount";
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
-            this.amount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWallet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvWallet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWallet.Location = new System.Drawing.Point(384, 59);
+            this.dgvWallet.Name = "dgvWallet";
+            this.dgvWallet.Size = new System.Drawing.Size(473, 369);
+            this.dgvWallet.TabIndex = 9;
+            this.dgvWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWallet_CellContentClick);
             // 
             // FormWallet
             // 
@@ -218,28 +175,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.dgvWallet);
             this.Controls.Add(this.btnLoadWallet);
             this.Controls.Add(this.btnDeleteWallet);
             this.Controls.Add(this.btnEditWallet);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnAddWallet);
-            this.Controls.Add(this.dgvWalletData);
             this.Name = "FormWallet";
             this.Text = "FormWallet";
             this.Load += new System.EventHandler(this.FormWallet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvWalletData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWallet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvWalletData;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddWallet;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtWalletName;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
@@ -247,8 +202,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnEditWallet;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDeleteWallet;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnLoadWallet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn walletName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridView dgvWallet;
     }
 }

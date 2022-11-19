@@ -38,13 +38,13 @@ namespace GoCoin_WinFormFix.Forms
             try
             {
                 conn.Open();
-                dgvWalletData.DataSource = null;
+                dgvWallet.DataSource = null;
                 sql = "select * from wallet_select()";
                 cmd = new NpgsqlCommand(sql, conn);
                 dt = new DataTable();
                 NpgsqlDataReader rd = cmd.ExecuteReader();
                 dt.Load(rd);
-                dgvWalletData.DataSource = dt;
+                dgvWallet.DataSource = dt;
 
                 conn.Close();
             }
@@ -54,17 +54,10 @@ namespace GoCoin_WinFormFix.Forms
             }
         }
 
-        private void dgvWalletData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                r = dgvWalletData.Rows[e.RowIndex];
-                txtWalletName.Text = r.Cells["walletName"].Value.ToString();
-            }
-        }
-
         private void btnAddWallet_Click(object sender, EventArgs e)
         {
+            
+
             try
             {
                 newWallet = new Wallet(txtWalletName.Text);
@@ -78,19 +71,22 @@ namespace GoCoin_WinFormFix.Forms
             {
                 MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         
 
         private void btnEditWallet_Click(object sender, EventArgs e)
         {
-            if(r == null)
+            
+
+            if (r == null)
             {
                 MessageBox.Show("Mohon pilih baris data yang akan di edit", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             try
             {
-                string id = r.Cells["id"].Value.ToString();
+                string id = r.Cells["_id"].Value.ToString();
                 string name = txtWalletName.Text;
                 newWallet = new Wallet(id, name);
                 Wallet.UpdateWallet(newWallet, id);
@@ -104,21 +100,24 @@ namespace GoCoin_WinFormFix.Forms
             {
                 MessageBox.Show("Error" + ex.Message, "Update Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
         private void btnDeleteWallet_Click(object sender, EventArgs e)
         {
+            
+
             if (r == null)
             {
                 MessageBox.Show("Mohon pilih baris data yang akan di dihapus", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (MessageBox.Show("Apakah benar anda ingin menghapus data " + r.Cells["walletName"].Value.ToString()+" ?", "Hapus data terkonfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            if (MessageBox.Show("Apakah benar anda ingin menghapus data " + r.Cells["_wallet_name"].Value.ToString()+" ?", "Hapus data terkonfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 try
                 {
-                    string id = r.Cells["id"].Value.ToString();
+                    string id = r.Cells["_id"].Value.ToString();
                     Wallet.DeleteWallet(id);
                     conn.Close();
                     btnLoadWallet.PerformClick();
@@ -130,7 +129,18 @@ namespace GoCoin_WinFormFix.Forms
                     MessageBox.Show("Error" + ex.Message, "Delete Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
+            LoadData();
+        }
+
+        private void dgvWallet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                r = dgvWallet.Rows[e.RowIndex];
+                txtWalletName.Text = r.Cells["_wallet_name"].Value.ToString();
+            }
         }
     }
 }
