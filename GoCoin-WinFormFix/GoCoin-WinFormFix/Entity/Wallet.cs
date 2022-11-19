@@ -16,10 +16,10 @@ namespace GoCoin_WinFormFix.Entity
     internal class Wallet
     {
         // properties
-        protected int _id { get; set; }
+        protected string _id { get; set; }
         protected string _name { get; set; }
 
-        public int Id
+        public string Id
         {
             get { return _id; }
         }
@@ -36,7 +36,7 @@ namespace GoCoin_WinFormFix.Entity
         {
             _name = wallet_name_;
         }
-        public Wallet(int id_, string wallet_name_)
+        public Wallet(string id_, string wallet_name_)
         {
             _id = id_;
             _name = wallet_name_;
@@ -47,8 +47,6 @@ namespace GoCoin_WinFormFix.Entity
         private static NpgsqlDataReader rd;
 
         // methods
-
-
         public DataTable dt;
         private string sql = null;
         private DataGridViewRow r;
@@ -61,7 +59,7 @@ namespace GoCoin_WinFormFix.Entity
                 NpgsqlConnection conn = new Connection().GetConnection();
                 conn.Open();
 
-                string query = @"select * from wallet_insert(:_wallet_name)";
+                string sql = @"select * from wallet_insert(:_wallet_name)";
                 string check = "select * from tb_wallet where wallet_name='" + newWallet.Name + "'";
 
                 NpgsqlCommand checking = new NpgsqlCommand(check, conn);
@@ -78,8 +76,7 @@ namespace GoCoin_WinFormFix.Entity
                 {
                     rd.Close();
                     try {
-                        cmd = new NpgsqlCommand(query, conn);
-
+                        cmd = new NpgsqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("_wallet_name", newWallet.Name);
 
                         if ((int)cmd.ExecuteScalar() == 1)
@@ -99,9 +96,36 @@ namespace GoCoin_WinFormFix.Entity
             }
         }
 
+
+        public static void UpdateWallet(Wallet wallet, string id)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            conn.Open();
+
+            string sql = @"select * from wallet_update(:_id, :_wallet_name)";
+
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Parameters.AddWithValue("_id", id);
+            cmd.Parameters.AddWithValue("_wallet_name", wallet.Name);
+
+            try
+            {
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    MessageBox.Show("Data Wallet Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         public static void DeleteWallet (string id)
         {
-
             NpgsqlConnection conn = new Connection().GetConnection();
             conn.Open();
 
@@ -109,7 +133,6 @@ namespace GoCoin_WinFormFix.Entity
 
             cmd = new NpgsqlCommand(query, conn);
             cmd.CommandType = CommandType.Text;
-
             cmd.Parameters.AddWithValue("_id", id);
 
 
