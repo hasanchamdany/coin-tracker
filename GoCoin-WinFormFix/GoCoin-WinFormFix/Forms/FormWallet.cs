@@ -9,18 +9,20 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GoCoin_WinFormFix.Entity;
+using GoCoin_WinFormFix.Forms;
+
 
 namespace GoCoin_WinFormFix.Forms
 {
     public partial class FormWallet : Form
     {
+        Wallet newWallet;
         public FormWallet()
         {
             InitializeComponent();
         }
-        public NpgsqlConnection conn;
-        /*public string connstring = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=GoCoin";*/
-        string connstring = "Host = localhost; port=5432; username = postgres; password = admin; database = GoCoin";
+        NpgsqlConnection conn = new Connection().GetConnection();
 
         public DataTable dt;
         public static NpgsqlCommand cmd;
@@ -28,31 +30,7 @@ namespace GoCoin_WinFormFix.Forms
         private DataGridViewRow r;
         private void FormWallet_Load(object sender, EventArgs e)
         {
-            conn = new NpgsqlConnection(connstring);
             btnLoadWallet.PerformClick();
-        }
-
-        private void btnAddWallet_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                conn.Open();
-                sql = @"select * from wallet_insert(:_wallet_name)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("_wallet_name", txtWalletName.Text);
-                if ((int)cmd.ExecuteScalar() == 1)
-                {
-                    MessageBox.Show("Wallet berhasil ditambahkan", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                    btnLoadWallet.PerformClick();
-                    txtWalletName.Text = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnLoadWallet_Click(object sender, EventArgs e)
@@ -70,11 +48,30 @@ namespace GoCoin_WinFormFix.Forms
 
                 conn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnAddWallet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                newWallet = new Wallet(txtWalletName.Text);
+                newWallet.AddWallet(newWallet);
+
+                btnLoadWallet.PerformClick();
+                txtWalletName.Text = null;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
 
         private void dgvWalletData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,20 +122,12 @@ namespace GoCoin_WinFormFix.Forms
             {
                 try
                 {
-                    conn.Open();
-                    sql = @"select * from wallet_delete(:_id)";
-                    cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("_id", r.Cells["id"].Value.ToString());
-
-                    if ((int)cmd.ExecuteScalar() == 1)
-                    {
-                        MessageBox.Show("Data Wallet Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        conn.Close();
-                        btnLoadWallet.PerformClick();
-                        txtWalletName = null;
-                        r = null;
-                    }
-
+                    string id = r.Cells["id"].Value.ToString();
+                    Wallet.DeleteWallet(id);
+                    conn.Close();
+                    btnLoadWallet.PerformClick();
+                    txtWalletName = null;
+                    r = null;
                 }
                 catch (Exception ex)
                 {
