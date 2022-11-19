@@ -93,7 +93,7 @@ namespace GoCoin_WinFormFix.Forms
 
                 conn.Close();
                 btnLoadWallet.PerformClick();
-                txtWalletName = null;
+                txtWalletName.Text = null;
                 r = null;
 
             }catch(Exception ex)
@@ -121,7 +121,7 @@ namespace GoCoin_WinFormFix.Forms
                     Wallet.DeleteWallet(id);
                     conn.Close();
                     btnLoadWallet.PerformClick();
-                    txtWalletName = null;
+                    txtWalletName.Text = null;
                     r = null;
                 }
                 catch (Exception ex)
@@ -130,7 +130,6 @@ namespace GoCoin_WinFormFix.Forms
                 }
             }
 
-            LoadData();
         }
 
         private void dgvWallet_CellContentClick(object sender, DataGridViewCellEventArgs e)

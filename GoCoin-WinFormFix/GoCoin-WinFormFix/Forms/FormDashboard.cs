@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using GoCoin_WinFormFix.Entity;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,30 +33,37 @@ namespace GoCoin_WinFormFix.Forms
         {
             conn = new NpgsqlConnection(connstring);
             /*loadWallet();*/
+            loadCBWallet();
         }
 
-        /*private void loadWallet()
+        private void loadCBWallet()
         {
             try
             {
                 conn.Open();
+                cbWallet.DataSource = null;
                 sql = "select wallet_name from tb_wallet";
                 cmd = new NpgsqlCommand(sql, conn);
-                List<string> cbWalletData = new List<string>();
+                dt = new DataTable();
                 NpgsqlDataReader rd = cmd.ExecuteReader();
+                /*dt.Load(rd);*/
+
+                List<string> cbWalletData = new List<string>();
                 while (rd.Read())
                 {
-                    Object data = new object();
-                    cbWalletData.Add(data.ToString());
+                    string walletName = rd["wallet_name"].ToString();
+                    cbWalletData.Add(walletName);
                 }
-                cbWallet.DataSource = dt;
+
+                cbWallet.DataSource = cbWalletData;
+
                 conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }*/
+        }
 
         private void btnEditWallet_Click(object sender, EventArgs e)
         {
