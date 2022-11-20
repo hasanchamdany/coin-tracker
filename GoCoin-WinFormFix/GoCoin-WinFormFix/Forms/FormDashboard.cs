@@ -35,16 +35,6 @@ namespace GoCoin_WinFormFix.Forms
             loadDgvOutcome();
         }
 
-        private void btnEditTrans_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnDeleteTrans_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddTrans_Click(object sender, EventArgs e)
         {
             try
@@ -64,18 +54,90 @@ namespace GoCoin_WinFormFix.Forms
                     transaction_type = rdbOutcome.Text;
                 }
 
-                
                 newTrans = new Transaction(transaction_type, wallet_name, category, amount, date_tr);
                 newTrans.AddTransaction(newTrans);
 
                 loadDgvIncome();
                 loadDgvOutcome();
+                resetInput();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Error" + ex.Message, "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnEditTrans_Click(object sender, EventArgs e)
+        {
+            if (r == null)
+            {
+                MessageBox.Show("Mohon pilih baris data yang akan di edit", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            try
+            {
+                string id = r.Cells["id"].Value.ToString();
+                string transaction_type = "";
+                string category = cbCategory.Text;
+                string wallet_name = cbWallet.Text;
+                string date_tr = dateNow.ToString();
+                int amount = int.Parse(txtAmount.Text);
+
+                if (rdbIncome.Checked)
+                {
+                    transaction_type = rdbIncome.Text;
+                }
+                else if (rdbOutcome.Checked)
+                {
+                    transaction_type = rdbOutcome.Text;
+                }
+
+                newTrans = new Transaction(id, transaction_type, wallet_name, category, amount, date_tr);
+                Transaction.UpdateTransaction(newTrans, id, transaction_type, wallet_name, category, amount, date_tr);
+
+                conn.Close();
+
+                loadDgvIncome();
+                loadDgvOutcome();
+                resetInput();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex.Message, "Update Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDeleteTrans_Click(object sender, EventArgs e)
+        {
+
+            if (r == null)
+            {
+                MessageBox.Show("Mohon pilih baris data yang akan di dihapus", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Apakah benar anda ingin menghapus data " + r.Cells["id"].Value.ToString() + " ?", "Hapus data terkonfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                try
+                {
+                    string id = r.Cells["id"].Value.ToString();
+                    Transaction.DeleteTransaction(id);
+
+                    conn.Close();
+
+                    loadDgvIncome();
+                    loadDgvOutcome();
+                    resetInput();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error" + ex.Message, "Delete Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        
 
         private void loadDgvIncome()
         {
@@ -164,11 +226,53 @@ namespace GoCoin_WinFormFix.Forms
             cbCategory.DataSource = cbCategoryData;
         }
 
-        private void dgvIncome_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void resetInput()
         {
-
+            rdbOutcome.Checked = false;
+            rdbIncome.Checked = false;
+            cbWallet.Text = null;
+            cbCategory.Text = null;
+            txtAmount.Text = null;
         }
 
+        private void dgvIncome_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                r = dgvIncome.Rows[e.RowIndex];
+                string trans_type = r.Cells["transaction_type"].Value.ToString();
+                if (trans_type == "Income") {
+                    rdbIncome.Checked = true;
+                }
+                else
+                {
+                    rdbOutcome.Checked = true;
+                }
+                cbCategory.Text = r.Cells["category_name"].Value.ToString();
+                cbWallet.Text = r.Cells["wallet_name"].Value.ToString();
+                txtAmount.Text = r.Cells["amount"].Value.ToString();
+            }
+        }
         
+
+        private void dgvOutcome_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                r = dgvOutcome.Rows[e.RowIndex];
+                string trans_type = r.Cells["transaction_type"].Value.ToString();
+                if (trans_type == "Income")
+                {
+                    rdbIncome.Checked = true;
+                }
+                else
+                {
+                    rdbOutcome.Checked = true;
+                }
+                cbCategory.Text = r.Cells["category_name"].Value.ToString();
+                cbWallet.Text = r.Cells["wallet_name"].Value.ToString();
+                txtAmount.Text = r.Cells["amount"].Value.ToString();
+            }
+        }
     }
 }

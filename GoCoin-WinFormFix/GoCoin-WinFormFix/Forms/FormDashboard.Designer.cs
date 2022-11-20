@@ -135,6 +135,7 @@
             this.dgvOutcome.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.dgvOutcome.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.dgvOutcome.TabIndex = 10;
+            this.dgvOutcome.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutcome_CellContentClick);
             // 
             // dgvIncome
             // 

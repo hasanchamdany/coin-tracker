@@ -83,10 +83,12 @@ namespace GoCoin_WinFormFix.Entity
                         if ((int)cmd.ExecuteScalar() == 1)
                         {
                             MessageBox.Show("Wallet berhasil ditambahkan", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            conn.Close();
                         }
                     }
                     catch(Exception ex)
                     {
+                        conn.Close();
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -116,11 +118,12 @@ namespace GoCoin_WinFormFix.Entity
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
                     MessageBox.Show("Data Wallet Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -142,11 +145,12 @@ namespace GoCoin_WinFormFix.Entity
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
                     MessageBox.Show("Data Wallet Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
