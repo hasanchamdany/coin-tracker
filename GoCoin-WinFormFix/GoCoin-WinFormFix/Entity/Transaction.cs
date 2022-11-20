@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -55,6 +56,14 @@ namespace GoCoin_WinFormFix.Entity
 
         //constructor
         public Transaction() { }
+        public Transaction(string transaction_type, string wallet_name, string category_name, int amount, string date)
+        {
+            _transaction_type = transaction_type;
+            _wallet_name = wallet_name;
+            _category_name = category_name;
+            _amount = amount;
+            _date = date;
+        }
         public Transaction(string id, string transaction_type, string wallet_name, string category_name, int amount, string date)
         {
             _id = id;
@@ -75,19 +84,22 @@ namespace GoCoin_WinFormFix.Entity
 
             try
             {
+                
                 NpgsqlConnection conn = new Connection().GetConnection();
                 conn.Open();
 
                 string sql = @"select * from transaction_insert(:_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
+                /*string sql = "insert into tb_transaction values (@transaction_type, @wallet_name, @category_name, @date_tr, @amount)";*/
 
                 try
                 {
                     cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("_transaction_type", newTransaction.TransactionType);
-                    cmd.Parameters.AddWithValue("_wallet_name", newTransaction.WalletName);
-                    cmd.Parameters.AddWithValue("_category_name", newTransaction);
-                    cmd.Parameters.AddWithValue("_date_tr", newTransaction.DateTr);
-                    cmd.Parameters.AddWithValue("_amount", newTransaction.Amount);
+
+                    cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value =  newTransaction.TransactionType;
+                    cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value =  newTransaction.WalletName;
+                    cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value =  newTransaction.CategoryName;
+                    cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value =  newTransaction.DateTr;
+                    cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value =  newTransaction.Amount;
 
 
                     if ((int)cmd.ExecuteScalar() == 1)

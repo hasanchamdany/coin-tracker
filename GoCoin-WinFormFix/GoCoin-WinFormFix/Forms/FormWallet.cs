@@ -18,26 +18,28 @@ namespace GoCoin_WinFormFix.Forms
     public partial class FormWallet : Form
     {
         Wallet newWallet;
-        public FormWallet()
-        {
-            InitializeComponent();
-        }
         NpgsqlConnection conn = new Connection().GetConnection();
-
         public DataTable dt;
         public static NpgsqlCommand cmd;
         private string sql = null;
         private DataGridViewRow r;
+
+        public FormWallet()
+        {
+            InitializeComponent();
+        }
+        
         private void FormWallet_Load(object sender, EventArgs e)
         {
-            btnLoadWallet.PerformClick();
+            LoadWallet();
         }
 
-        private void btnLoadWallet_Click(object sender, EventArgs e)
+        private void LoadWallet()
         {
             try
             {
                 conn.Open();
+
                 dgvWallet.DataSource = null;
                 sql = "select * from wallet_select()";
                 cmd = new NpgsqlCommand(sql, conn);
@@ -54,6 +56,17 @@ namespace GoCoin_WinFormFix.Forms
             }
         }
 
+        private void ResetInput()
+        {
+            txtWalletName.Text = null;
+            r = null;
+        }
+
+        private void btnLoadWallet_Click(object sender, EventArgs e)
+        {
+            LoadWallet();
+        }
+
         private void btnAddWallet_Click(object sender, EventArgs e)
         {
             
@@ -63,9 +76,7 @@ namespace GoCoin_WinFormFix.Forms
                 newWallet = new Wallet(txtWalletName.Text);
                 newWallet.AddWallet(newWallet);
 
-                btnLoadWallet.PerformClick();
-                txtWalletName.Text = null;
-                
+                LoadWallet();
             }
             catch (Exception ex)
             {
@@ -92,11 +103,11 @@ namespace GoCoin_WinFormFix.Forms
                 Wallet.UpdateWallet(newWallet, id);
 
                 conn.Close();
-                btnLoadWallet.PerformClick();
-                txtWalletName.Text = null;
-                r = null;
 
-            }catch(Exception ex)
+                LoadWallet();
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Error" + ex.Message, "Update Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -119,10 +130,10 @@ namespace GoCoin_WinFormFix.Forms
                 {
                     string id = r.Cells["_id"].Value.ToString();
                     Wallet.DeleteWallet(id);
+
                     conn.Close();
-                    btnLoadWallet.PerformClick();
-                    txtWalletName.Text = null;
-                    r = null;
+
+                    LoadWallet();
                 }
                 catch (Exception ex)
                 {

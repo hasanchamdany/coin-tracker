@@ -28,23 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.btnAddTrans = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.cbCategory = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.cbWallet = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.dgvOutcome = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.Walletname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvIncome = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,18 +44,13 @@
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnEditTrans = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnDeleteTrans = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.chIncome = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chOutcome = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtAmount = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.cbCategory = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddTrans = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWallet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutcome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).BeginInit();
@@ -75,32 +58,9 @@
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chIncome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chOutcome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
             this.kryptonPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCategory)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAddTrans
-            // 
-            this.btnAddTrans.Location = new System.Drawing.Point(12, 294);
-            this.btnAddTrans.Name = "btnAddTrans";
-            this.btnAddTrans.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnAddTrans.Size = new System.Drawing.Size(200, 36);
-            this.btnAddTrans.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.btnAddTrans.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.btnAddTrans.StateCommon.Border.ColorAngle = 0F;
-            this.btnAddTrans.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnAddTrans.StateCommon.Border.Rounding = 20;
-            this.btnAddTrans.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnAddTrans.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnAddTrans.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTrans.TabIndex = 7;
-            this.btnAddTrans.Values.Text = "Add Transaction";
-            this.btnAddTrans.Click += new System.EventHandler(this.btnEditWallet_Click);
             // 
             // label1
             // 
@@ -122,6 +82,22 @@
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.kryptonPanel1.TabIndex = 9;
             // 
+            // cbCategory
+            // 
+            this.cbCategory.DropDownWidth = 177;
+            this.cbCategory.Location = new System.Drawing.Point(9, 10);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.cbCategory.Size = new System.Drawing.Size(183, 27);
+            this.cbCategory.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.White;
+            this.cbCategory.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbCategory.StateCommon.ComboBox.Border.Rounding = 10;
+            this.cbCategory.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.TabIndex = 1;
+            this.cbCategory.Text = "Choose category";
+            // 
             // cbWallet
             // 
             this.cbWallet.DropDownWidth = 177;
@@ -140,16 +116,12 @@
             // 
             // dgvOutcome
             // 
+            this.dgvOutcome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOutcome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOutcome.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Walletname,
-            this.Category,
-            this.Amount,
-            this.Date});
-            this.dgvOutcome.Location = new System.Drawing.Point(571, 31);
+            this.dgvOutcome.Location = new System.Drawing.Point(248, 251);
             this.dgvOutcome.Name = "dgvOutcome";
             this.dgvOutcome.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvOutcome.Size = new System.Drawing.Size(301, 242);
+            this.dgvOutcome.Size = new System.Drawing.Size(591, 186);
             this.dgvOutcome.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.dgvOutcome.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.dgvOutcome.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
@@ -164,42 +136,14 @@
             this.dgvOutcome.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.dgvOutcome.TabIndex = 10;
             // 
-            // Walletname
-            // 
-            this.Walletname.HeaderText = "Wallet";
-            this.Walletname.Name = "Walletname";
-            this.Walletname.Width = 60;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.Width = 60;
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.Width = 70;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.Width = 70;
-            // 
             // dgvIncome
             // 
+            this.dgvIncome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIncome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIncome.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dgvIncome.Location = new System.Drawing.Point(248, 31);
+            this.dgvIncome.Location = new System.Drawing.Point(248, 28);
             this.dgvIncome.Name = "dgvIncome";
             this.dgvIncome.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.dgvIncome.Size = new System.Drawing.Size(301, 242);
+            this.dgvIncome.Size = new System.Drawing.Size(591, 186);
             this.dgvIncome.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.dgvIncome.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.dgvIncome.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
@@ -213,13 +157,14 @@
             this.dgvIncome.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.dgvIncome.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.dgvIncome.TabIndex = 11;
+            this.dgvIncome.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIncome_CellContentClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(245, 12);
+            this.label2.Location = new System.Drawing.Point(245, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 16);
             this.label2.TabIndex = 12;
@@ -230,7 +175,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(568, 9);
+            this.label3.Location = new System.Drawing.Point(245, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 16);
             this.label3.TabIndex = 13;
@@ -319,6 +264,7 @@
             this.btnEditTrans.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditTrans.TabIndex = 22;
             this.btnEditTrans.Values.Text = "Edit";
+            this.btnEditTrans.Click += new System.EventHandler(this.btnEditTrans_Click);
             // 
             // btnDeleteTrans
             // 
@@ -338,78 +284,7 @@
             this.btnDeleteTrans.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteTrans.TabIndex = 23;
             this.btnDeleteTrans.Values.Text = "Delete";
-            // 
-            // chIncome
-            // 
-            this.chIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            chartArea9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            chartArea9.BorderColor = System.Drawing.Color.White;
-            chartArea9.BorderWidth = 10;
-            chartArea9.Name = "ChartArea1";
-            this.chIncome.ChartAreas.Add(chartArea9);
-            legend9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            legend9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend9.ForeColor = System.Drawing.Color.White;
-            legend9.IsTextAutoFit = false;
-            legend9.Name = "Legend1";
-            this.chIncome.Legends.Add(legend9);
-            this.chIncome.Location = new System.Drawing.Point(248, 279);
-            this.chIncome.Name = "chIncome";
-            series9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            series9.BorderWidth = 3;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series9.IsValueShownAsLabel = true;
-            series9.IsXValueIndexed = true;
-            series9.LabelForeColor = System.Drawing.Color.White;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chIncome.Series.Add(series9);
-            this.chIncome.Size = new System.Drawing.Size(301, 170);
-            this.chIncome.TabIndex = 24;
-            this.chIncome.Text = "chart1";
-            title9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title9.ForeColor = System.Drawing.Color.White;
-            title9.Name = "Title1";
-            title9.Text = "Income";
-            this.chIncome.Titles.Add(title9);
-            // 
-            // chOutcome
-            // 
-            this.chOutcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            chartArea10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            chartArea10.BorderColor = System.Drawing.Color.White;
-            chartArea10.BorderWidth = 10;
-            chartArea10.Name = "ChartArea1";
-            this.chOutcome.ChartAreas.Add(chartArea10);
-            legend10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            legend10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend10.ForeColor = System.Drawing.Color.White;
-            legend10.IsTextAutoFit = false;
-            legend10.Name = "Legend1";
-            this.chOutcome.Legends.Add(legend10);
-            this.chOutcome.Location = new System.Drawing.Point(571, 279);
-            this.chOutcome.Name = "chOutcome";
-            series10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            series10.BorderWidth = 3;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series10.IsValueShownAsLabel = true;
-            series10.IsXValueIndexed = true;
-            series10.LabelForeColor = System.Drawing.Color.White;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chOutcome.Series.Add(series10);
-            this.chOutcome.Size = new System.Drawing.Size(301, 170);
-            this.chOutcome.TabIndex = 25;
-            this.chOutcome.Text = "chart2";
-            title10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title10.ForeColor = System.Drawing.Color.White;
-            title10.Name = "Title1";
-            title10.Text = "Income";
-            this.chOutcome.Titles.Add(title10);
+            this.btnDeleteTrans.Click += new System.EventHandler(this.btnDeleteTrans_Click);
             // 
             // label6
             // 
@@ -449,45 +324,25 @@
             this.txtAmount.StateCommon.Content.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.TabIndex = 2;
             // 
-            // cbCategory
+            // btnAddTrans
             // 
-            this.cbCategory.DropDownWidth = 177;
-            this.cbCategory.Location = new System.Drawing.Point(9, 10);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.cbCategory.Size = new System.Drawing.Size(183, 27);
-            this.cbCategory.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.White;
-            this.cbCategory.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.btnAddTrans.Location = new System.Drawing.Point(12, 294);
+            this.btnAddTrans.Name = "btnAddTrans";
+            this.btnAddTrans.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnAddTrans.Size = new System.Drawing.Size(200, 36);
+            this.btnAddTrans.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnAddTrans.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnAddTrans.StateCommon.Border.ColorAngle = 0F;
+            this.btnAddTrans.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbCategory.StateCommon.ComboBox.Border.Rounding = 10;
-            this.cbCategory.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCategory.TabIndex = 1;
-            this.cbCategory.Text = "Choose category";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Wallet";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 60;
+            this.btnAddTrans.StateCommon.Border.Rounding = 20;
+            this.btnAddTrans.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnAddTrans.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnAddTrans.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTrans.TabIndex = 28;
+            this.btnAddTrans.Values.Text = "Add Transaction";
+            this.btnAddTrans.Click += new System.EventHandler(this.btnAddTrans_Click);
             // 
             // FormDashboard
             // 
@@ -495,10 +350,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.btnAddTrans);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.kryptonPanel4);
-            this.Controls.Add(this.chOutcome);
-            this.Controls.Add(this.chIncome);
             this.Controls.Add(this.btnDeleteTrans);
             this.Controls.Add(this.btnEditTrans);
             this.Controls.Add(this.label5);
@@ -511,12 +365,12 @@
             this.Controls.Add(this.dgvOutcome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kryptonPanel1);
-            this.Controls.Add(this.btnAddTrans);
             this.Name = "FormDashboard";
             this.Text = "FormDashboard";
             this.Load += new System.EventHandler(this.FormDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbWallet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutcome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).EndInit();
@@ -525,28 +379,19 @@
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chIncome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chOutcome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
             this.kryptonPanel4.ResumeLayout(false);
             this.kryptonPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCategory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddTrans;
         private System.Windows.Forms.Label label1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvOutcome;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbWallet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Walletname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvIncome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -558,15 +403,10 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnEditTrans;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDeleteTrans;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chIncome;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chOutcome;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbCategory;
         private System.Windows.Forms.Label label6;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddTrans;
     }
 }
