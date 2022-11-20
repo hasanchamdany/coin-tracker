@@ -58,5 +58,10 @@ namespace GoCoin_WinFormFix.Forms
             activeForm.Close();
             lblTitle.Text = "Home";
         }
+
+        private void btnStatistic_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormStatistic(), sender, "Statistic");
+        }
     }
 }
