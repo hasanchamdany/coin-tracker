@@ -1,7 +1,8 @@
 -- insert function --
-create function wallet_insert
+create or replace function wallet_insert
 (
-	_wallet_name character varying
+	_wallet_name character varying,
+	_amount integer
 
 )
 returns int as
@@ -9,12 +10,14 @@ returns int as
 begin
 	insert into public.tb_wallet
 	(
-		wallet_name
+		wallet_name,
+		amount
 		
 	)
 	values
 	(
-		_wallet_name
+		_wallet_name,
+		_amount
 		
 	);
 	if found then
