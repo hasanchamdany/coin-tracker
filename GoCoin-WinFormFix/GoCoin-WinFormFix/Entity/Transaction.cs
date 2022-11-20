@@ -105,10 +105,12 @@ namespace GoCoin_WinFormFix.Entity
                     if ((int)cmd.ExecuteScalar() == 1)
                     {
                         MessageBox.Show("Transaksi berhasil ditambahkan", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        conn.Close();
                     }
                 }
                 catch (Exception ex)
                 {
+                    conn.Close();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -119,7 +121,7 @@ namespace GoCoin_WinFormFix.Entity
         }
 
 
-        public static void UpdateTransaction(Transaction newTransaction, string id)
+        public static void UpdateTransaction(Transaction newTransaction, string id, string transaction_type, string wallet_name, string category, int amount, string date_tr)
         {
             NpgsqlConnection conn = new Connection().GetConnection();
             conn.Open();
@@ -127,25 +129,33 @@ namespace GoCoin_WinFormFix.Entity
             string sql = @"select * from transaction_update(:_id, :_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
 
             cmd = new NpgsqlCommand(sql, conn);
-            cmd.CommandType = CommandType.Text;
+            /*cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.AddWithValue("_id", id);
             cmd.Parameters.AddWithValue("_transaction_type", newTransaction.TransactionType);
             cmd.Parameters.AddWithValue("_wallet_name", newTransaction.WalletName);
             cmd.Parameters.AddWithValue("_category_name", newTransaction);
             cmd.Parameters.AddWithValue("_date_tr", newTransaction.DateTr);
-            cmd.Parameters.AddWithValue("_amount", newTransaction.Amount);
+            cmd.Parameters.AddWithValue("_amount", newTransaction.Amount);*/
+
+            cmd.Parameters.Add("_id", NpgsqlDbType.Varchar).Value = newTransaction.Id;
+            cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value = newTransaction.TransactionType;
+            cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = newTransaction.WalletName;
+            cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value = newTransaction.CategoryName;
+            cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value = newTransaction.DateTr;
+            cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value = newTransaction.Amount;
 
             try
             {
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
                     MessageBox.Show("Data transaksi Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -167,11 +177,12 @@ namespace GoCoin_WinFormFix.Entity
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
                     MessageBox.Show("Data transaksi Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    conn.Close();
                 }
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
