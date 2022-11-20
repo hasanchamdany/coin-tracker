@@ -163,9 +163,9 @@
             // 
             this.dgvWallet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWallet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWallet.Location = new System.Drawing.Point(384, 59);
+            this.dgvWallet.Location = new System.Drawing.Point(351, 59);
             this.dgvWallet.Name = "dgvWallet";
-            this.dgvWallet.Size = new System.Drawing.Size(473, 369);
+            this.dgvWallet.Size = new System.Drawing.Size(506, 369);
             this.dgvWallet.TabIndex = 9;
             this.dgvWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWallet_CellContentClick);
             // 
@@ -183,7 +183,7 @@
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnAddWallet);
             this.Name = "FormWallet";
-            this.Text = "FormWallet";
+            this.Text = " v";
             this.Load += new System.EventHandler(this.FormWallet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);

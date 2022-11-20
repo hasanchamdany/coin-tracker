@@ -59,7 +59,7 @@ namespace GoCoin_WinFormFix.Entity
                 NpgsqlConnection conn = new Connection().GetConnection();
                 conn.Open();
 
-                string sql = @"select * from wallet_insert(:_wallet_name)";
+                string sql = @"select * from wallet_insert(:_wallet_name, :_amount)";
                 string check = "select * from tb_wallet where wallet_name='" + newWallet.Name + "'";
 
                 NpgsqlCommand checking = new NpgsqlCommand(check, conn);
@@ -78,6 +78,7 @@ namespace GoCoin_WinFormFix.Entity
                     try {
                         cmd = new NpgsqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("_wallet_name", newWallet.Name);
+                        cmd.Parameters.AddWithValue("_amount", 0);
 
                         if ((int)cmd.ExecuteScalar() == 1)
                         {
