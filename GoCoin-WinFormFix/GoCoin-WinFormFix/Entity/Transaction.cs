@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace GoCoin_WinFormFix.Entity
 {
@@ -77,106 +78,196 @@ namespace GoCoin_WinFormFix.Entity
         // Connection variables
         private static NpgsqlCommand cmd;
         private static NpgsqlDataReader rd;
+        public DataTable totalAmount;
 
         // methods
         public void AddTransaction(Transaction newTransaction)
         {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            int totalAmount = 0;
+
+            try
+            {   
+                conn.Open();
+                // add transaction
+                string sql = @"select * from transaction_insert(:_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value = newTransaction.TransactionType;
+                cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = newTransaction.WalletName;
+                cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value = newTransaction.CategoryName;
+                cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value = newTransaction.DateTr;
+                cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value = newTransaction.Amount;
+
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    MessageBox.Show("Transaksi berhasil ditambahkan", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+            // Get total amount
+            try
+            {
+                totalAmount = GetTotalAmount(newTransaction.WalletName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+            // Update wallet amount
+            try
+            {
+                UpdateWalletAmount(newTransaction.WalletName, totalAmount);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+        }
+
+        public static void UpdateTransaction(Transaction newTransaction, string id, string transaction_type, string wallet_name, string category, int amount, string date_tr)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            string sql = @"select * from transaction_update(:_id, :_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
+            int totalAmount = 0;
 
             try
             {
-                
-                NpgsqlConnection conn = new Connection().GetConnection();
                 conn.Open();
+                cmd = new NpgsqlCommand(sql, conn);
 
-                string sql = @"select * from transaction_insert(:_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
-                /*string sql = "insert into tb_transaction values (@transaction_type, @wallet_name, @category_name, @date_tr, @amount)";*/
+                cmd.Parameters.Add("_id", NpgsqlDbType.Varchar).Value = newTransaction.Id;
+                cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value = newTransaction.TransactionType;
+                cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = newTransaction.WalletName;
+                cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value = newTransaction.CategoryName;
+                cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value = newTransaction.DateTr;
+                cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value = newTransaction.Amount;
+
+
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    MessageBox.Show("Data transaksi Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Get total amount
+            try
+            {
+                totalAmount = GetTotalAmount(wallet_name);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+            // Update wallet amount
+            try
+            {
+                UpdateWalletAmount(wallet_name, totalAmount);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+        }
+
+        public static void DeleteTransaction(string id, string wallet_name)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            int totalAmount = 0;
+
+            try
+            {
+                conn.Open();
+                string query = @"select * from transaction_delete(:_id)";
+
+                cmd = new NpgsqlCommand(query, conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("_id", id);
 
                 try
                 {
-                    cmd = new NpgsqlCommand(sql, conn);
-
-                    cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value =  newTransaction.TransactionType;
-                    cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value =  newTransaction.WalletName;
-                    cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value =  newTransaction.CategoryName;
-                    cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value =  newTransaction.DateTr;
-                    cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value =  newTransaction.Amount;
-
-
                     if ((int)cmd.ExecuteScalar() == 1)
                     {
-                        MessageBox.Show("Transaksi berhasil ditambahkan", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Data transaksi Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         conn.Close();
                     }
                 }
                 catch (Exception ex)
                 {
                     conn.Close();
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                conn.Close();
             }
-        }
 
-
-        public static void UpdateTransaction(Transaction newTransaction, string id, string transaction_type, string wallet_name, string category, int amount, string date_tr)
-        {
-            NpgsqlConnection conn = new Connection().GetConnection();
-            conn.Open();
-
-            string sql = @"select * from transaction_update(:_id, :_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
-
-            cmd = new NpgsqlCommand(sql, conn);
-            /*cmd.CommandType = CommandType.Text;
-
-            cmd.Parameters.AddWithValue("_id", id);
-            cmd.Parameters.AddWithValue("_transaction_type", newTransaction.TransactionType);
-            cmd.Parameters.AddWithValue("_wallet_name", newTransaction.WalletName);
-            cmd.Parameters.AddWithValue("_category_name", newTransaction);
-            cmd.Parameters.AddWithValue("_date_tr", newTransaction.DateTr);
-            cmd.Parameters.AddWithValue("_amount", newTransaction.Amount);*/
-
-            cmd.Parameters.Add("_id", NpgsqlDbType.Varchar).Value = newTransaction.Id;
-            cmd.Parameters.Add("_transaction_type", NpgsqlDbType.Varchar).Value = newTransaction.TransactionType;
-            cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = newTransaction.WalletName;
-            cmd.Parameters.Add("_category_name", NpgsqlDbType.Varchar).Value = newTransaction.CategoryName;
-            cmd.Parameters.Add("_date_tr", NpgsqlDbType.Varchar).Value = newTransaction.DateTr;
-            cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value = newTransaction.Amount;
-
+            // Get total amount
             try
             {
-                if ((int)cmd.ExecuteScalar() == 1)
-                {
-                    MessageBox.Show("Data transaksi Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                }
+                totalAmount = GetTotalAmount(wallet_name);
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 conn.Close();
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Update wallet amount
+            try
+            {
+                UpdateWalletAmount(wallet_name, totalAmount);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+
         }
 
-        public static void DeleteTransaction(string id)
+        public static void UpdateWalletAmount(string _wallet_name, int _total_amount)
         {
+            // update amount in table wallet
             NpgsqlConnection conn = new Connection().GetConnection();
+
             conn.Open();
+            string sqlUpdateWallet = @"select * from wallet_update_amount(:_amount, :_wallet_name)";
 
-            string query = @"select * from transaction_delete(:_id)";
-
-            cmd = new NpgsqlCommand(query, conn);
+            cmd = new NpgsqlCommand(sqlUpdateWallet, conn);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("_id", id);
 
+            cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = _wallet_name;
+            cmd.Parameters.Add("_amount", NpgsqlDbType.Integer).Value = _total_amount;
 
             try
             {
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
-                    MessageBox.Show("Data transaksi Berhasil dihapus", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Data Wallet Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                 }
             }
@@ -185,19 +276,72 @@ namespace GoCoin_WinFormFix.Entity
                 conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
-       /* public List<Transaction> GetTransactions()
+
+        public static int GetTotalAmount(string wallet_name)
         {
-            List<Transaction> ListTransaction = new List<Transaction>();
+            NpgsqlConnection conn = new Connection().GetConnection();
+            int income = 0;
+            int outcome = 0;
+            int totalAmount = 0;
+
+
+            // Get Income
             try
             {
-                return ListTransaction;
-            }
-            catch (Exception)
-            {
+                string sqlGetIncome = "select sum(amount) as Amount from tb_transaction " +
+                    "where wallet_name = '" + wallet_name + "' " +
+                    "and transaction_type = 'Income'";
 
-                throw;
+                conn.Open();
+                cmd = new NpgsqlCommand(sqlGetIncome, conn);
+                NpgsqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    income = int.Parse(rd["amount"].ToString());
+                }
+
+                conn.Close();
+
             }
-        }*/
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+
+            // Get Outcome
+            try
+            {
+                string sqlGetOutcome = "select sum(amount) as Amount from tb_transaction " +
+                    "where wallet_name = '" + wallet_name + "' " +
+                    "and transaction_type = 'Outcome'";
+
+                conn.Open();
+                cmd = new NpgsqlCommand(sqlGetOutcome, conn);
+                NpgsqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    outcome = int.Parse(rd["amount"].ToString());
+                }
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
+
+            // Get total amount
+            totalAmount = income - outcome;
+
+            return totalAmount;
+        }
+
     }
 }
