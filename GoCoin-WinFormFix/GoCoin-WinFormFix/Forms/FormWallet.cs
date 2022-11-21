@@ -62,11 +62,6 @@ namespace GoCoin_WinFormFix.Forms
             r = null;
         }
 
-        private void btnLoadWallet_Click(object sender, EventArgs e)
-        {
-            LoadWallet();
-        }
-
         private void btnAddWallet_Click(object sender, EventArgs e)
         {
             
@@ -143,9 +138,10 @@ namespace GoCoin_WinFormFix.Forms
 
         }
 
-        private void dgvWallet_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        
 
+        private void dgvWallet_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
             if (e.RowIndex >= 0)
             {
                 r = dgvWallet.Rows[e.RowIndex];

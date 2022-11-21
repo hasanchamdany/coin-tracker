@@ -110,8 +110,8 @@ namespace GoCoin_WinFormFix.Entity
             cmd = new NpgsqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.AddWithValue("_id", id);
-            cmd.Parameters.AddWithValue("_wallet_name", wallet.Name);
+            cmd.Parameters.Add("_wallet_name", NpgsqlDbType.Varchar).Value = wallet.Name;
+            cmd.Parameters.Add("_id", NpgsqlDbType.Varchar).Value = id;
 
             try
             {

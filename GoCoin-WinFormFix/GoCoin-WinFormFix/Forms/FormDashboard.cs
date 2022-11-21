@@ -122,7 +122,9 @@ namespace GoCoin_WinFormFix.Forms
                 try
                 {
                     string id = r.Cells["id"].Value.ToString();
-                    Transaction.DeleteTransaction(id);
+                    string wallet_name = cbWallet.Text;
+
+                    Transaction.DeleteTransaction(id, wallet_name);
 
                     conn.Close();
 
@@ -215,6 +217,7 @@ namespace GoCoin_WinFormFix.Forms
             List<string> cbCategoryData = new List<string>();
             cbCategoryData.Add("Sallary");
             cbCategoryData.Add("Bonus");
+            cbCategoryData.Add("Allowance");
             cbCategory.DataSource = cbCategoryData;
         }
 
@@ -223,6 +226,9 @@ namespace GoCoin_WinFormFix.Forms
             List<string> cbCategoryData = new List<string>();
             cbCategoryData.Add("Food");
             cbCategoryData.Add("Entertainment");
+            cbCategoryData.Add("Education");
+            cbCategoryData.Add("Household");
+
             cbCategory.DataSource = cbCategoryData;
         }
 

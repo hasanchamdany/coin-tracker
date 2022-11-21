@@ -83,3 +83,24 @@ end
 language plpgsql
 
 drop function if exists wallet_update(character varying);
+
+-- update total amount function --
+create or replace function wallet_update_amount
+(
+	_amount integer,
+	_wallet_name character varying
+)
+returns int as
+'
+begin
+	update tb_wallet set
+		amount = _amount
+	where wallet_name = _wallet_name;
+	if found then
+		return 1;
+	else
+		return 0;
+	end if;
+end
+'
+language plpgsql

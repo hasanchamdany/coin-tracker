@@ -34,8 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnEditWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnDeleteWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnLoadWallet = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.dgvWallet = new System.Windows.Forms.DataGridView();
+            this.dgvWallet = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWallet)).BeginInit();
@@ -139,35 +138,28 @@
             this.btnDeleteWallet.Values.Text = "Delete";
             this.btnDeleteWallet.Click += new System.EventHandler(this.btnDeleteWallet_Click);
             // 
-            // btnLoadWallet
-            // 
-            this.btnLoadWallet.Location = new System.Drawing.Point(175, 383);
-            this.btnLoadWallet.Name = "btnLoadWallet";
-            this.btnLoadWallet.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnLoadWallet.Size = new System.Drawing.Size(121, 36);
-            this.btnLoadWallet.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.btnLoadWallet.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-            this.btnLoadWallet.StateCommon.Border.ColorAngle = 0F;
-            this.btnLoadWallet.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLoadWallet.StateCommon.Border.Rounding = 20;
-            this.btnLoadWallet.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnLoadWallet.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnLoadWallet.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadWallet.TabIndex = 8;
-            this.btnLoadWallet.Values.Text = "Load";
-            this.btnLoadWallet.Click += new System.EventHandler(this.btnLoadWallet_Click);
-            // 
             // dgvWallet
             // 
             this.dgvWallet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWallet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWallet.Location = new System.Drawing.Point(351, 59);
+            this.dgvWallet.Location = new System.Drawing.Point(337, 59);
             this.dgvWallet.Name = "dgvWallet";
-            this.dgvWallet.Size = new System.Drawing.Size(506, 369);
-            this.dgvWallet.TabIndex = 9;
-            this.dgvWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWallet_CellContentClick);
+            this.dgvWallet.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.dgvWallet.Size = new System.Drawing.Size(520, 360);
+            this.dgvWallet.StateCommon.Background.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.dgvWallet.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.dgvWallet.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.dgvWallet.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.dgvWallet.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.White;
+            this.dgvWallet.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.White;
+            this.dgvWallet.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.dgvWallet.StateCommon.DataCell.Content.Color1 = System.Drawing.Color.White;
+            this.dgvWallet.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.dgvWallet.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.dgvWallet.TabIndex = 12;
+            this.dgvWallet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWallet_CellContentClick_1);
             // 
             // FormWallet
             // 
@@ -176,7 +168,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.dgvWallet);
-            this.Controls.Add(this.btnLoadWallet);
             this.Controls.Add(this.btnDeleteWallet);
             this.Controls.Add(this.btnEditWallet);
             this.Controls.Add(this.label1);
@@ -201,7 +192,6 @@
         private System.Windows.Forms.Label label1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnEditWallet;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDeleteWallet;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnLoadWallet;
-        private System.Windows.Forms.DataGridView dgvWallet;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvWallet;
     }
 }
