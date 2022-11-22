@@ -30,6 +30,7 @@ namespace GoCoin_WinFormFix.Forms
 
         private void FormDashboard_Load(object sender, EventArgs e)
         {
+            resetInput();
             loadCBWallet();
             loadDgvIncome();
             loadDgvOutcome();
@@ -39,27 +40,35 @@ namespace GoCoin_WinFormFix.Forms
         {
             try
             {
-                string transaction_type = "";
-                string category = cbCategory.Text;
-                string wallet_name = cbWallet.Text;
-                string date_tr = dateNow.ToString();
-                int amount = int.Parse(txtAmount.Text);
 
-                if (rdbIncome.Checked)
+                if (((rdbIncome.Checked && rdbOutcome.Checked) == true) || (cbCategory.Text == "" ) || (cbWallet.Text == "") || (txtAmount.Text == ""))
                 {
-                    transaction_type = rdbIncome.Text;
+                    MessageBox.Show("Mohon isi semua input dengan format yang sesuai", "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (rdbOutcome.Checked)
+                else
                 {
-                    transaction_type = rdbOutcome.Text;
+                    string transaction_type = null;
+                    string category = cbCategory.Text;
+                    string wallet_name = cbWallet.Text;
+                    string date_tr = dateNow.ToString();
+                    int amount = int.Parse(txtAmount.Text);
+
+                    if (rdbIncome.Checked)
+                    {
+                        transaction_type = rdbIncome.Text;
+                    }
+                    else if (rdbOutcome.Checked)
+                    {
+                        transaction_type = rdbOutcome.Text;
+                    }
+
+                    newTrans = new Transaction(transaction_type, wallet_name, category, amount, date_tr);
+                    newTrans.AddTransaction(newTrans);
+
+                    loadDgvIncome();
+                    loadDgvOutcome();
+                    resetInput();
                 }
-
-                newTrans = new Transaction(transaction_type, wallet_name, category, amount, date_tr);
-                newTrans.AddTransaction(newTrans);
-
-                loadDgvIncome();
-                loadDgvOutcome();
-                resetInput();
             }
 
             catch (Exception ex)
@@ -77,30 +86,38 @@ namespace GoCoin_WinFormFix.Forms
             }
             try
             {
-                string id = r.Cells["id"].Value.ToString();
-                string transaction_type = "";
-                string category = cbCategory.Text;
-                string wallet_name = cbWallet.Text;
-                string date_tr = dateNow.ToString();
-                int amount = int.Parse(txtAmount.Text);
-
-                if (rdbIncome.Checked)
+                if (((rdbIncome.Checked && rdbOutcome.Checked) == true) || (cbCategory.Text == "") || (cbWallet.Text == "") || (txtAmount.Text == ""))
                 {
-                    transaction_type = rdbIncome.Text;
-                }
-                else if (rdbOutcome.Checked)
-                {
-                    transaction_type = rdbOutcome.Text;
+                    MessageBox.Show("Mohon isi semua input dengan format yang sesuai", "Fail!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                newTrans = new Transaction(id, transaction_type, wallet_name, category, amount, date_tr);
-                Transaction.UpdateTransaction(newTrans, id, transaction_type, wallet_name, category, amount, date_tr);
+                else
+                {
+                    string id = r.Cells["id"].Value.ToString();
+                    string transaction_type = "";
+                    string category = cbCategory.Text;
+                    string wallet_name = cbWallet.Text;
+                    string date_tr = dateNow.ToString();
+                    int amount = int.Parse(txtAmount.Text);
 
-                conn.Close();
+                    if (rdbIncome.Checked)
+                    {
+                        transaction_type = rdbIncome.Text;
+                    }
+                    else if (rdbOutcome.Checked)
+                    {
+                        transaction_type = rdbOutcome.Text;
+                    }
 
-                loadDgvIncome();
-                loadDgvOutcome();
-                resetInput();
+                    newTrans = new Transaction(id, transaction_type, wallet_name, category, amount, date_tr);
+                    Transaction.UpdateTransaction(newTrans, id, transaction_type, wallet_name, category, amount, date_tr);
+
+                    conn.Close();
+
+                    loadDgvIncome();
+                    loadDgvOutcome();
+                    resetInput();
+                }
 
             }
             catch (Exception ex)
@@ -228,7 +245,6 @@ namespace GoCoin_WinFormFix.Forms
             cbCategoryData.Add("Entertainment");
             cbCategoryData.Add("Education");
             cbCategoryData.Add("Household");
-
             cbCategory.DataSource = cbCategoryData;
         }
 
@@ -236,9 +252,9 @@ namespace GoCoin_WinFormFix.Forms
         {
             rdbOutcome.Checked = false;
             rdbIncome.Checked = false;
-            cbWallet.Text = null;
-            cbCategory.Text = null;
-            txtAmount.Text = null;
+            cbWallet.Text = "";
+            cbCategory.Text = "";
+            txtAmount.Text = "";
         }
 
         private void dgvIncome_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -78,7 +78,8 @@ namespace GoCoin_WinFormFix.Entity
         // Connection variables
         private static NpgsqlCommand cmd;
         private static NpgsqlDataReader rd;
-        public DataTable totalAmount;
+        
+
 
         // methods
         public void AddTransaction(Transaction newTransaction)
@@ -110,28 +111,15 @@ namespace GoCoin_WinFormFix.Entity
                 conn.Close();
             }
 
+
             // Get total amount
-            try
-            {
-                totalAmount = GetTotalAmount(newTransaction.WalletName);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
+            totalAmount = GetTotalAmount(newTransaction.WalletName);
 
             // Update wallet amount
-            try
-            {
-                UpdateWalletAmount(newTransaction.WalletName, totalAmount);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
+            UpdateWalletAmount(newTransaction.WalletName, totalAmount);
+          
         }
+
 
         public static void UpdateTransaction(Transaction newTransaction, string id, string transaction_type, string wallet_name, string category, int amount, string date_tr)
         {
@@ -157,7 +145,6 @@ namespace GoCoin_WinFormFix.Entity
                     MessageBox.Show("Data transaksi Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -165,29 +152,15 @@ namespace GoCoin_WinFormFix.Entity
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+
             // Get total amount
-            try
-            {
-                totalAmount = GetTotalAmount(wallet_name);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
+            totalAmount = GetTotalAmount(wallet_name);
 
             // Update wallet amount
-            try
-            {
-                UpdateWalletAmount(wallet_name, totalAmount);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
-
+            UpdateWalletAmount(wallet_name, totalAmount);
+           
         }
+
 
         public static void DeleteTransaction(string id, string wallet_name)
         {
@@ -216,7 +189,6 @@ namespace GoCoin_WinFormFix.Entity
                     conn.Close();
                     MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             catch (Exception ex)
             {
@@ -225,29 +197,12 @@ namespace GoCoin_WinFormFix.Entity
             }
 
             // Get total amount
-            try
-            {
-                totalAmount = GetTotalAmount(wallet_name);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
+            totalAmount = GetTotalAmount(wallet_name);
 
             // Update wallet amount
-            try
-            {
-                UpdateWalletAmount(wallet_name, totalAmount);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
-
-
+            UpdateWalletAmount(wallet_name, totalAmount);
         }
+
 
         public static void UpdateWalletAmount(string _wallet_name, int _total_amount)
         {
@@ -267,7 +222,6 @@ namespace GoCoin_WinFormFix.Entity
             {
                 if ((int)cmd.ExecuteScalar() == 1)
                 {
-                    MessageBox.Show("Data Wallet Berhasil diubah", "Well Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     conn.Close();
                 }
             }
@@ -276,8 +230,8 @@ namespace GoCoin_WinFormFix.Entity
                 conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
+
 
         public static int GetTotalAmount(string wallet_name)
         {
@@ -309,7 +263,6 @@ namespace GoCoin_WinFormFix.Entity
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message);
             }
 
 
@@ -334,8 +287,8 @@ namespace GoCoin_WinFormFix.Entity
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message);
             }
+
 
             // Get total amount
             totalAmount = income - outcome;
