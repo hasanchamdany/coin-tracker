@@ -64,14 +64,22 @@ namespace GoCoin_WinFormFix.Forms
 
         private void btnAddWallet_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
-                newWallet = new Wallet(txtWalletName.Text);
-                newWallet.AddWallet(newWallet);
+                if ((txtWalletName.Text == null) || (txtWalletName.Text == ""))
+                {
+                    MessageBox.Show("Mohon isi semua bagian masukan", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    newWallet = new Wallet(txtWalletName.Text);
+                    newWallet.AddWallet(newWallet);
 
-                LoadWallet();
+                    LoadWallet();
+                    ResetInput();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -92,15 +100,22 @@ namespace GoCoin_WinFormFix.Forms
             }
             try
             {
-                string id = r.Cells["_id"].Value.ToString();
-                string name = txtWalletName.Text;
-                newWallet = new Wallet(id, name);
-                Wallet.UpdateWallet(newWallet, id);
 
-                conn.Close();
+                if ((txtWalletName.Text == null) || (txtWalletName.Text == ""))
+                {
+                    MessageBox.Show("Mohon isi semua bagian masukan", "Good!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    string id = r.Cells["_id"].Value.ToString();
+                    string name = txtWalletName.Text;
+                    newWallet = new Wallet(id, name);
+                    Wallet.UpdateWallet(newWallet, id);
 
-                LoadWallet();
-
+                    LoadWallet();
+                    ResetInput();
+                }
             }
             catch(Exception ex)
             {
@@ -124,11 +139,11 @@ namespace GoCoin_WinFormFix.Forms
                 try
                 {
                     string id = r.Cells["_id"].Value.ToString();
-                    Wallet.DeleteWallet(id);
-
-                    conn.Close();
+                    string wallet_name = txtWalletName.Text;
+                    Wallet.DeleteWallet(id, wallet_name);
 
                     LoadWallet();
+                    ResetInput();
                 }
                 catch (Exception ex)
                 {

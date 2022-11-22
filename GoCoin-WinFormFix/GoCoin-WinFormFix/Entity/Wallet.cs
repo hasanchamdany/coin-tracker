@@ -32,7 +32,7 @@ namespace GoCoin_WinFormFix.Entity
 
         //constructor
         public Wallet() { }
-        public Wallet( string wallet_name)
+        public Wallet(string wallet_name)
         {
             _name = wallet_name;
         }
@@ -47,7 +47,7 @@ namespace GoCoin_WinFormFix.Entity
         private static NpgsqlDataReader rd;
 
         // methods
-        public DataTable dt;
+        public static DataTable dt;
         private string sql = null;
         private DataGridViewRow r;
 
@@ -86,7 +86,7 @@ namespace GoCoin_WinFormFix.Entity
                             conn.Close();
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         conn.Close();
                         MessageBox.Show(ex.Message);
@@ -102,6 +102,8 @@ namespace GoCoin_WinFormFix.Entity
 
         public static void UpdateWallet(Wallet wallet, string id)
         {
+            string old_wallet_name = GetSpesificWallet(id);
+
             NpgsqlConnection conn = new Connection().GetConnection();
             conn.Open();
 
@@ -126,19 +128,22 @@ namespace GoCoin_WinFormFix.Entity
                 conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            UpdateTransactionWallet(old_wallet_name, wallet.Name);
+
+            
         }
 
-        public static void DeleteWallet (string id)
+        public static void DeleteWallet(string id, string wallet_name)
         {
             NpgsqlConnection conn = new Connection().GetConnection();
             conn.Open();
 
-            string query = @"select * from wallet_delete(:_id)";
+            string sql = @"select * from wallet_delete(:_id)";
 
-            cmd = new NpgsqlCommand(query, conn);
+            cmd = new NpgsqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("_id", id);
-
 
             try
             {
@@ -153,8 +158,80 @@ namespace GoCoin_WinFormFix.Entity
                 conn.Close();
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            DeleteTransactionWallet(wallet_name);
+        }
+
+        private static void DeleteTransactionWallet(string wallet_name)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            conn.Open();
+
+            string sql = @"select * from transaction_delete_wallet(:_wallet_name)";
+
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("_wallet_name", wallet_name);
+
+            try
+            {
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
 
+        public static string GetSpesificWallet(string id)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            conn.Open();
+
+            string sql = "select wallet_name from tb_wallet where id = '" + id + "'";
+            cmd = new NpgsqlCommand(sql, conn);
+            NpgsqlDataReader rd = cmd.ExecuteReader();
+            string wallet_name = "";
+            while (rd.Read())
+            {
+                wallet_name = rd["wallet_name"].ToString();
+            }
+
+            conn.Close();
+
+            return wallet_name;
+        }
+
+        public static void UpdateTransactionWallet(string old_wallet_name, string new_wallet_name)
+        {
+            NpgsqlConnection conn = new Connection().GetConnection();
+            conn.Open();
+
+            string sql = @"select * from transaction_update_wallet(:_old_wallet_name, :_new_wallet_name)";
+
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Parameters.Add("_old_wallet_name", NpgsqlDbType.Varchar).Value = old_wallet_name;
+            cmd.Parameters.Add("_new_wallet_name", NpgsqlDbType.Varchar).Value = new_wallet_name;
+
+            try
+            {
+                if ((int)cmd.ExecuteScalar() == 1)
+                {
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
