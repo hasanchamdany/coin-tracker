@@ -117,7 +117,7 @@ namespace GoCoin_WinFormFix.Forms
                     loadDgvIncome();
                     loadDgvOutcome();
                     resetInput();
-                }
+                }   
 
             }
             catch (Exception ex)
