@@ -9,6 +9,9 @@ Solusi yang diusulkan GoCoin berserta fitur-fiturnya sebagai berikut:
 ## Kelompok 8
 - Ketua Kelompok	: Muchammad Hasan Chamdany - 20/456846/TK/50670
 	- Anggota 1		: Muhammad Arif Hidayat - 20/463609/TK/51601
+	
+## Link drive aplikasi
+https://drive.google.com/drive/folders/1cTqUhPsio-pbNEvudeaSgSphfQxXC76L?usp=share_link
 
 ## Rancangan Aplikasi
 <div class="Usecase"> 
