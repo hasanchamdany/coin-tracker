@@ -127,8 +127,8 @@ namespace GoCoin_WinFormFix.Entity
             string sql = @"select * from transaction_update(:_id, :_transaction_type, :_wallet_name, :_category_name, :_date_tr, :_amount)";
             int totalAmount = 0;
 
-            try
-            {
+            try 
+            {   
                 conn.Open();
                 cmd = new NpgsqlCommand(sql, conn);
 
